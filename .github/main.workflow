@@ -3,6 +3,10 @@ workflow "Deploy on Now" {
   resolves = ["release"]
 }
 
+action "pull-kitt" {
+  runs = "git submodule foreach git pull origin master"
+}
+
 # Deploy, and write deployment to file
 action "deploy" {
   uses = "actions/zeit-now@master"
